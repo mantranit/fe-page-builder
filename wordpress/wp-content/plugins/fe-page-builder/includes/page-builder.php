@@ -237,6 +237,18 @@ function fepb_render_rows( $post ){
 		echo '<p class="fepb-rows-message" style="display:none;">' . $default_message . '</p>';
 	}
 
+	?>
+
+	<?php add_thickbox(); ?>
+	<div id="my-content-id" style="display:none;">
+		<p>
+			This is my hidden content! It will appear in ThickBox when the link is clicked.
+		</p>
+	</div>
+
+	<a href="#TB_inline?width=600&height=550&inlineId=my-content-id" class="thickbox">View my inline content!</a>
+
+	<?php
 	/* Loop for each rows */
 	foreach( $row_datas as $order => $row_data ){
 		$order = intval( $order );
