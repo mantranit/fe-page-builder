@@ -1,0 +1,109 @@
+/**
+ * FE Page Builder Admin CSS
+**/
+#postdivrich{
+	display: none; /* JS toggle will display this */
+}
+#fe-page-builder{
+	display: none; /* JS toggle will display this */
+	margin: 20px 0;
+}
+/* Templates */
+.fepb-templates{
+	display: none;
+}
+/* Rows */
+.fepb-rows{
+	margin-bottom: 30px;
+}
+.fepb-rows-message{
+	border: 2px dashed #ccc;
+	padding: 10px 20px;
+	text-align: center;
+}
+/* Buttons */
+.fepb-actions{
+	margin-bottom: 30px;
+}
+/* Row */
+.fepb-row{
+	font-size: 16px;
+	border: 1px solid #ccc;
+	background: #fff;
+	margin-bottom: 20px;
+}
+	/* Sortable Placeholder */
+	.fepb-row.ui-sortable-placeholder{
+		border: 1px dashed #ccc;
+		visibility: visible !important;
+		background: transparent;
+	}
+.fepb-row-title{
+}
+.fepb-row-title:after{
+	content:".";display:block;height:0;clear:both;visibility:hidden;
+}
+.fepb-handle{
+	padding: 10px;
+	border-right: 1px solid #ccc;
+	cursor: grab;
+}
+	.fepb-handle:hover{
+	}
+.fepb-order{
+	background: #efefef;
+	color: #aaa;
+	border: 1px solid #ccc;
+	border-radius: 50%;
+	display: inline-block;
+	font-size: 18px;
+	font-style: normal;
+	font-weight: normal;
+	height: 20px;
+	line-height: 1;
+	margin-top: 5px;
+	padding: 5px 6px;
+	text-align: center;
+	text-decoration: inherit;
+	vertical-align: top;
+	width: 20px;
+}
+.fepb-row-title-text{
+	padding: 12px 10px 9px 0;
+	display: inline-block;
+}
+.fepb-remove{
+	padding: 10px;
+	border-left: 1px solid #ccc;
+	float: right;
+	cursor: pointer;
+}
+.fepb-remove:hover{
+	background: red;
+	color: #fff;
+}
+.fepb-row-fields{
+	border-top: 1px solid #ccc;
+	padding: 10px;
+}
+.fepb-row-fields:after{
+	content:".";display:block;height:0;clear:both;visibility:hidden;
+}
+.fepb-row-fields textarea{
+	width: 100%;
+	height: 100px;
+}
+/* 1 column template */
+.fepb-col-1{
+}
+/* 2 columns template */
+.fepb-col-2{
+}
+.fepb-col-2 .fepb-col-2-left{
+	width: 49%;
+	float: left;
+}
+.fepb-col-2 .fepb-col-2-right{
+	width: 49%;
+	float: right;
+}

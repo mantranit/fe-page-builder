@@ -1,0 +1,17 @@
+/**
+ * Front End Columns
+**/
+.fepb-row:after{
+	content:".";display:block;height:0;clear:both;visibility:hidden;
+}
+.fepb-col-1 .row-content{
+	width: 100%;
+}
+.fepb-col-2 .row-content-1{
+	width: 48%;
+	float: left;
+}
+.fepb-col-2 .row-content-2{
+	width: 48%;
+	float: right;
+}
