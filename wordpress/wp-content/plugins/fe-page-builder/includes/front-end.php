@@ -85,6 +85,6 @@ function fepb_front_end_scripts(){
 	if( is_page() && ( 'templates/fe-page-builder.php' == get_page_template_slug( get_queried_object_id() ) ) ){
 
 		/* Enqueue CSS & JS For Page Builder */
-		wp_enqueue_style( 'fx-page-builder', FE_PB_URI. 'assets/page-builder.css', array(), FE_PB_VERSION );
+		wp_enqueue_style( 'fe-page-builder', FE_PB_URI. 'assets/fe-page-builder.css', array(), FE_PB_VERSION );
 	}
 }

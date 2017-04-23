@@ -21,7 +21,7 @@ add_filter( 'theme_page_templates', 'fepb_register_page_template' );
  * @since 1.0.0
  */
 function fepb_register_page_template( $templates ){
-	$templates['templates/fe-page-builder.php'] = 'Page Builder';
+	$templates['templates/fe-page-builder.php'] = 'FE Page Builder';
 	return $templates;
 }
 
