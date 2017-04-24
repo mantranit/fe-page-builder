@@ -12,6 +12,8 @@ jQuery( document ).ready( function($) {
 		else{
 			$( '#postdivrich' ).show();
 			$( '#fe-page-builder' ).hide();
+
+			$(window).trigger('scroll');
 		}
 	}
 

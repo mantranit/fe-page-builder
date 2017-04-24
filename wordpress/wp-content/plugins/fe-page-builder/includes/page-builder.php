@@ -41,7 +41,21 @@ function fepb_editor_callback( $post ){
 		return;
 	}
 ?>
+
+	<?php
+	$widgets = array_keys( $GLOBALS['wp_widget_factory']->widgets );
+	print '<pre>$widgets = ' . esc_html( var_export( $widgets, TRUE ) ) . '</pre>';
+	?>
 	<div id="fe-page-builder">
+
+		<?php add_thickbox(); ?>
+
+		<div class="angular-app">
+			<my-app>FE Page Builder loading...</my-app>
+			<script>
+				System.import('<?php echo FE_PB_URI; ?>assets/angular/src/main.js').catch(function(err){ console.error(err); });
+			</script>
+		</div>
 
 		<div class="fepb-rows">
 			<?php fepb_render_rows( $post ); // display saved rows ?>
@@ -323,6 +337,11 @@ function fepb_admin_scripts( $hook_suffix ){
 		/* Enqueue CSS & JS For Page Builder */
 		wp_enqueue_style( 'fepb-admin', FE_PB_URI. 'assets/admin-page-builder.css', array(), FE_PB_VERSION );
 		wp_enqueue_script( 'fepb-admin', FE_PB_URI. 'assets/admin-page-builder.js', array( 'jquery', 'jquery-ui-sortable' ), FE_PB_VERSION, true );
+
+		wp_enqueue_script( 'fepb-admin-shim', FE_PB_URI. 'assets/angular/node_modules/core-js/client/shim.min.js', array(  ), FE_PB_VERSION, false );
+		wp_enqueue_script( 'fepb-admin-zone', FE_PB_URI. 'assets/angular/node_modules/zone.js/dist/zone.js', array(  ), FE_PB_VERSION, false );
+		wp_enqueue_script( 'fepb-admin-system', FE_PB_URI. 'assets/angular/node_modules/systemjs/dist/system.src.js', array(  ), FE_PB_VERSION, false );
+		wp_enqueue_script( 'fepb-admin-config', FE_PB_URI. 'assets/angular/src/systemjs.config.js', array(  ), FE_PB_VERSION, false );
 	}
 }
 
