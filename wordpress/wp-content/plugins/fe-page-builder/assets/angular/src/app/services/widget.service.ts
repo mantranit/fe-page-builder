@@ -28,4 +28,10 @@ export class WidgetService {
       setTimeout(() => resolve(this.getWidgets()), 2000);
     });
   }
+
+  getWidget(id: number): Promise<Widget> {
+    return this.getWidgets()
+        .then(widgets => widgets.find(widget => widget.id === id));
+  }
+
 }

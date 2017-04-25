@@ -1,10 +1,6 @@
 <h1>{{title}}</h1>
-<h2>My Widgets</h2>
-<ul class="widgets">
-    <li *ngFor="let widget of widgets"
-        [class.selected]="widget === selectedWidget"
-        (click)="onSelect(widget)">
-        <span class="badge">{{widget.id}}</span> {{widget.name}}
-    </li>
-</ul>
-<widget-detail [widget]="selectedWidget"></widget-detail>
+<nav>
+    <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+    <a routerLink="/widgets" routerLinkActive="active">Widgets</a>
+</nav>
+<router-outlet></router-outlet>
