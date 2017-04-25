@@ -17,6 +17,36 @@ jQuery( document ).ready( function($) {
 		}
 	}
 
+	( function( $ ) {
+		var frame = wp.media({
+			multiple: true
+		});
+
+		$(".media").on("click", function(e) {
+			frame.open();
+
+			e.preventDefault();
+		});
+
+		frame.on('open', function() {
+			console.log("Open");
+		});
+
+		frame.on('close', function() {
+			console.log("Close");
+		});
+
+		frame.on('select', function() {
+			console.log("Select");
+
+			var selection = frame.state().get('selection');
+
+			selection.each(function(attachment) {
+				console.log(attachment.id);
+			});
+		});
+	} )( jQuery );
+
 	/* Toggle On Page Load */
 	fePb_Editor_Toggle();
 

@@ -49,13 +49,24 @@ function fepb_editor_callback( $post ){
 	<div id="fe-page-builder">
 
 		<?php add_thickbox(); ?>
-
 		<div class="angular-app">
 			<my-app>FE Page Builder loading...</my-app>
 			<script>
-				System.import('<?php echo FE_PB_URI; ?>assets/angular/src/main.js').catch(function(err){ console.error(err); });
+				System.import('<?php echo FE_PB_URI; ?>//assets/angular/src/main.js').catch(function(err){ console.error(err); });
 			</script>
 		</div>
+
+		<?php
+		$content = '<h1>Heading 1</h1>\n<p>paragraph</p>';
+		$editor_id = 'text';
+//		wp_editor( $content, $editor_id );
+		?>
+
+		<script>
+			tinymce.execCommand( 'mceAddEditor', true, 'text' );
+		</script>
+
+		<textarea id="text"></textarea>
 
 		<div class="fepb-rows">
 			<?php fepb_render_rows( $post ); // display saved rows ?>
