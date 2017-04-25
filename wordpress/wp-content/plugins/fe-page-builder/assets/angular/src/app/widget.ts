@@ -1,4 +1,4 @@
-export class Hero {
+export class Widget {
   id: number;
   name: string;
 }

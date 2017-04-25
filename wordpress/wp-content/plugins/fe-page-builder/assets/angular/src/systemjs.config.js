@@ -6,13 +6,11 @@
   System.config({
     paths: {
       // paths serve as alias
-      //'npm:': '/wp-content/plugins/fe-page-builder/assets/angular/node_modules/'
       'npm:': 'node_modules/'
     },
     // map tells the System loader where to look for things
     map: {
       // our app is within the app folder
-      //'app': '/wp-content/plugins/fe-page-builder/assets/angular/src/app',
       'app': 'app',
 
       // angular bundles
@@ -42,7 +40,6 @@
         defaultExtension: 'js',
         meta: {
           './*.js': {
-            //loader: '/wp-content/plugins/fe-page-builder/assets/angular/src/systemjs-angular-loader.js'
             loader: 'systemjs-angular-loader.js'
           }
         }

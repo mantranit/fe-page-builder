@@ -1,18 +1,10 @@
-<div class="fepb-toolbar">
-    <a href="#TB_inline?width=600&height=550&inlineId=fepb-toolbar-button--add-widget" title="Add Widget" class="fepb-toolbar-button thickbox">Add Widget</a>
-    <a href="#TB_inline?width=600&height=550&inlineId=fepb-toolbar-button--add-row" title="Add Row" class="fepb-toolbar-button thickbox">Add Row</a>
-</div>
-
-<div id="fepb-toolbar-button--add-widget" style="display:none;">
-    <div class="media-modal wp-core-ui">
-        <h2>Widget</h2>
-        <p>This is my hidden content! It will appear in ThickBox when the link is clicked.</p>
-    </div>
-</div>
-
-<div id="fepb-toolbar-button--add-row" style="display:none;">
-    <div class="media-modal wp-core-ui">
-        <h2>Row</h2>
-        <p>This is my hidden content! It will appear in ThickBox when the link is clicked.</p>
-    </div>
-</div>
+<h1>{{title}}</h1>
+<h2>My Widgets</h2>
+<ul class="widgets">
+    <li *ngFor="let widget of widgets"
+        [class.selected]="widget === selectedWidget"
+        (click)="onSelect(hero)">
+        <span class="badge">{{widget.id}}</span> {{widget.name}}
+    </li>
+</ul>
+<widget-detail [widget]="selectedWidget"></widget-detail>

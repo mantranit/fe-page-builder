@@ -1,17 +1,30 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+
+import { Widget } from './widget';
+import { WidgetService } from './widget.service';
 
 @Component({
   selector: 'my-app',
-  template: `
-    <h1>{{title}}</h1>
-    <nav>
-      <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
-      <a routerLink="/heroes" routerLinkActive="active">Heroes</a>
-    </nav>
-    <router-outlet></router-outlet>
-  `,
-  styleUrls: ['./app.component.css'],
+  templateUrl: './../templates/app.component.html',
+  styleUrls: [ './../styles/app.component.css' ],
+  providers: [WidgetService]
 })
-export class AppComponent {
-  title = 'Tour of Heroes';
+export class AppComponent implements OnInit {
+  title = 'Tour of Widgets';
+  widgets: Widget[];
+  selectedWidget: Widget;
+
+  constructor(private widgetService: WidgetService) { }
+
+  getWidgets(): void {
+    this.widgetService.getWidgets().then(widgets => this.widgets = widgets);
+  }
+
+  ngOnInit(): void {
+    this.getWidgets();
+  }
+
+  onSelect(widget: Widget): void {
+    this.selectedWidget = widget;
+  }
 }

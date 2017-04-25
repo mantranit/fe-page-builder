@@ -41,18 +41,26 @@ function fepb_editor_callback( $post ){
 		return;
 	}
 ?>
-
+<script type="text/javascript">
 	<?php
 	$widgets = array_keys( $GLOBALS['wp_widget_factory']->widgets );
-	print '<pre>$widgets = ' . esc_html( var_export( $widgets, TRUE ) ) . '</pre>';
+	echo 'var heroes = [';
+	foreach($widgets as $index => $widget){
+		if($index > 0){
+			echo ',';
+		}
+		echo '{id:"' . $widget . '", name: "' . str_replace('_', ' ', $widget) . '"}';
+	}
+	echo ']';
 	?>
-	<div id="fe-page-builder">
+</script>
 
+	<div id="fe-page-builder">
 		<?php add_thickbox(); ?>
 		<div class="angular-app">
 			<my-app>FE Page Builder loading...</my-app>
 			<script>
-				System.import('<?php echo FE_PB_URI; ?>//assets/angular/src/main.js').catch(function(err){ console.error(err); });
+				System.import('<?php echo FE_PB_URI; ?>assets/angular/src/main.js').catch(function(err){ console.error(err); });
 			</script>
 		</div>
 
@@ -62,63 +70,59 @@ function fepb_editor_callback( $post ){
 //		wp_editor( $content, $editor_id );
 		?>
 
-		<script>
-			tinymce.execCommand( 'mceAddEditor', true, 'text' );
-		</script>
+		<div class="old" style="display: none">
+			<div class="fepb-rows">
+				<?php fepb_render_rows( $post ); // display saved rows ?>
+			</div><!-- .fepb-rows -->
 
-		<textarea id="text"></textarea>
+			<div class="fepb-actions">
+				<a href="#" class="fepb-add-row button-primary button-large" data-template="col-1">Add 1 Column</a>
+				<a href="#" class="fepb-add-row button-primary button-large" data-template="col-2">Add 2 Columns</a>
+			</div><!-- .fepb-actions -->
 
-		<div class="fepb-rows">
-			<?php fepb_render_rows( $post ); // display saved rows ?>
-		</div><!-- .fepb-rows -->
+			<div class="fepb-templates" style="display:none;">
 
-		<div class="fepb-actions">
-			<a href="#" class="fepb-add-row button-primary button-large" data-template="col-1">Add 1 Column</a>
-			<a href="#" class="fepb-add-row button-primary button-large" data-template="col-2">Add 2 Columns</a>
-		</div><!-- .fepb-actions -->
+				<?php /* == This is the 1 column row template == */ ?>
+				<div class="fepb-row fepb-col-1">
 
-		<div class="fepb-templates" style="display:none;">
+					<div class="fepb-row-title">
+						<span class="fepb-handle dashicons dashicons-sort"></span>
+						<span class="fepb-order">0</span>
+						<span class="fepb-row-title-text">1 Column</span>
+						<span class="fepb-remove dashicons dashicons-trash"></span>
+					</div><!-- .fepb-row-title -->
 
-			<?php /* == This is the 1 column row template == */ ?>
-			<div class="fepb-row fepb-col-1">
+					<div class="fepb-row-fields">
+						<textarea class="fepb-row-input" name="" data-field="content" placeholder="Add HTML here..."></textarea>
+						<input class="fepb-row-input" type="hidden" name="" data-field="type" value="col-1">
+					</div><!-- .fepb-row-fields -->
 
-				<div class="fepb-row-title">
-					<span class="fepb-handle dashicons dashicons-sort"></span>
-					<span class="fepb-order">0</span>
-					<span class="fepb-row-title-text">1 Column</span>
-					<span class="fepb-remove dashicons dashicons-trash"></span>
-				</div><!-- .fepb-row-title -->
+				</div><!-- .fepb-row.fepb-col-1 -->
 
-				<div class="fepb-row-fields">
-					<textarea class="fepb-row-input" name="" data-field="content" placeholder="Add HTML here..."></textarea>
-					<input class="fepb-row-input" type="hidden" name="" data-field="type" value="col-1">
-				</div><!-- .fepb-row-fields -->
+				<?php /* == This is the 2 columns row template == */ ?>
+				<div class="fepb-row fepb-col-2">
 
-			</div><!-- .fepb-row.fepb-col-1 -->
+					<div class="fepb-row-title">
+						<span class="fepb-handle dashicons dashicons-sort"></span>
+						<span class="fepb-order">0</span>
+						<span class="fepb-row-title-text">2 Columns</span>
+						<span class="fepb-remove dashicons dashicons-trash"></span>
+					</div><!-- .fepb-row-title -->
 
-			<?php /* == This is the 2 columns row template == */ ?>
-			<div class="fepb-row fepb-col-2">
+					<div class="fepb-row-fields">
+						<div class="fepb-col-2-left">
+							<textarea class="fepb-row-input" name="" data-field="content-1" placeholder="1st column content here..."></textarea>
+						</div><!-- .fepb-col-2-left -->
+						<div class="fepb-col-2-right">
+							<textarea class="fepb-row-input" name="" data-field="content-2" placeholder="2nd column content here..."></textarea>
+						</div><!-- .fepb-col-2-right -->
+						<input class="fepb-row-input" type="hidden" name="" data-field="type" value="col-2">
+					</div><!-- .fepb-row-fields -->
 
-				<div class="fepb-row-title">
-					<span class="fepb-handle dashicons dashicons-sort"></span>
-					<span class="fepb-order">0</span>
-					<span class="fepb-row-title-text">2 Columns</span>
-					<span class="fepb-remove dashicons dashicons-trash"></span>
-				</div><!-- .fepb-row-title -->
+				</div><!-- .fepb-row.fepb-col-2 -->
 
-				<div class="fepb-row-fields">
-					<div class="fepb-col-2-left">
-						<textarea class="fepb-row-input" name="" data-field="content-1" placeholder="1st column content here..."></textarea>
-					</div><!-- .fepb-col-2-left -->
-					<div class="fepb-col-2-right">
-						<textarea class="fepb-row-input" name="" data-field="content-2" placeholder="2nd column content here..."></textarea>
-					</div><!-- .fepb-col-2-right -->
-					<input class="fepb-row-input" type="hidden" name="" data-field="type" value="col-2">
-				</div><!-- .fepb-row-fields -->
-
-			</div><!-- .fepb-row.fepb-col-2 -->
-
-		</div><!-- .fepb-templates -->
+			</div><!-- .fepb-templates -->
+		</div>
 
 		<?php wp_nonce_field( "fepb_nonce_action", "fepb_nonce" ) ?>
 
