@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Widget } from './widget';
-import { WidgetService } from './widget.service';
+import { Widget } from './../models/widget';
+import { WidgetService } from './../services/widget.service';
 
 @Component({
   selector: 'my-app',
-  templateUrl: './../templates/app.component.html',
-  styleUrls: [ './../styles/app.component.css' ],
+  templateUrl: './../../templates/app.component.html',
+  styleUrls: [ './../../styles/app.component.css' ],
   providers: [WidgetService]
 })
 export class AppComponent implements OnInit {
