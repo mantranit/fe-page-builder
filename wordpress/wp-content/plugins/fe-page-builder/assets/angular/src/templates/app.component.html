@@ -3,7 +3,7 @@
 <ul class="widgets">
     <li *ngFor="let widget of widgets"
         [class.selected]="widget === selectedWidget"
-        (click)="onSelect(hero)">
+        (click)="onSelect(widget)">
         <span class="badge">{{widget.id}}</span> {{widget.name}}
     </li>
 </ul>
