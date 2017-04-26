@@ -34,18 +34,20 @@ h4 {
   min-width: 120px;
   background-color: #607D8B;
   border-radius: 2px;
+  &:hover {
+    background-color: #EEE;
+    cursor: pointer;
+    color: #607d8b;
+  }
 }
-.module:hover {
-  background-color: #EEE;
-  cursor: pointer;
-  color: #607d8b;
-}
+
 .grid-pad {
   padding: 10px 0;
+  > [class*='col-']:last-of-type {
+    padding-right: 20px;
+  }
 }
-.grid-pad > [class*='col-']:last-of-type {
-  padding-right: 20px;
-}
+
 @media (max-width: 600px) {
   .module {
     font-size: 10px;
