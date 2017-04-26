@@ -1,0 +1,15 @@
+<ul class="rows">
+  <li *ngFor="let row of rows"
+    [class.selected]="row === selectedWidget"
+    (click)="onSelect(row)">
+    <span class="badge">{{row.id}}</span> {{row.name}}
+    <button (click)="editRow()">Edit</button>
+    <button (click)="removeRow()">Remove</button>
+  </li>
+</ul>
+<div *ngIf="selectedWidget">
+  <h2>
+    {{selectedWidget.name | uppercase}} is my row
+  </h2>
+  <button (click)="gotoDetail()">View Details</button>
+</div>

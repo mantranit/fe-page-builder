@@ -10,12 +10,15 @@ import { WidgetService } from './../services/widget.service';
 })
 export class DashboardComponent implements OnInit {
 
+  rows: Row[] = [];
   widgets: Widget[] = [];
 
-  constructor(private widgetService: WidgetService) { }
+  constructor(
+      private widgetService: WidgetService
+  ) { }
 
   ngOnInit(): void {
     this.widgetService.getWidgets()
-      .then(widgets => this.widgets = widgets.slice(1, 5));
+        .then(widgets => this.widgets = widgets.slice(1, 5));
   }
 }

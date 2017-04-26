@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'my-app',
+  selector: 'fe-page-builder',
   templateUrl: './../../templates/app.component.html',
   styleUrls: [ './../../styles/app.component.css' ]
 })
 export class AppComponent implements OnInit {
-  title = 'Tour of Widgets';
+  title = 'FE Page Builder';
 }
