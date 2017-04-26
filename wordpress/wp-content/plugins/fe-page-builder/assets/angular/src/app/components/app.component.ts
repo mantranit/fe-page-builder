@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
+import { Component }          from '@angular/core';
 
 @Component({
-  selector: 'fe-page-builder',
+  selector: 'my-app',
   templateUrl: './../../templates/app.component.html',
-  styleUrls: [ './../../styles/app.component.css' ]
+  styleUrls: ['./../../styles/app.component.css']
 })
-export class AppComponent implements OnInit {
-  title = 'FE Page Builder';
+export class AppComponent {
+  title = 'Tour of Heroes';
 }

@@ -1,37 +1,38 @@
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }   from '@angular/forms';
+import { HttpModule }    from '@angular/http';
 
-import { AppComponent }           from './components/app.component';
-import { DashboardComponent }     from './components/dashboard.component';
-import { RowsComponent }       from './components/rows.component';
-import { WidgetsComponent }       from './components/widgets.component';
-import { WidgetDetailComponent }  from './components/widget-detail.component';
+import { AppRoutingModule } from './app-routing.module';
 
-import { WidgetService }          from './services/widget.service';
-import { RowService }          from './services/row.service';
+// Imports for loading & configuring the in-memory web api
+import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService }  from './services/in-memory-data.service';
 
-import { AppRoutingModule }       from './app-routing.module';
+import { AppComponent }         from './components/app.component';
+import { DashboardComponent }   from './components/dashboard.component';
+import { HeroesComponent }      from './components/heroes.component';
+import { HeroDetailComponent }  from './components/hero-detail.component';
+import { HeroSearchComponent }  from './components/hero-search.component';
+
+import { HeroService }          from './services/hero.service';
 
 @NgModule({
   imports: [
     BrowserModule,
     FormsModule,
+    HttpModule,
+    InMemoryWebApiModule.forRoot(InMemoryDataService),
     AppRoutingModule
   ],
   declarations: [
     AppComponent,
     DashboardComponent,
-    RowsComponent,
-    WidgetsComponent,
-    WidgetDetailComponent
+    HeroDetailComponent,
+    HeroesComponent,
+    HeroSearchComponent
   ],
-  providers: [
-    RowService,
-    WidgetService
-  ],
-  bootstrap: [
-    AppComponent
-  ]
+  providers: [ HeroService ],
+  bootstrap: [ AppComponent ]
 })
 export class AppModule { }

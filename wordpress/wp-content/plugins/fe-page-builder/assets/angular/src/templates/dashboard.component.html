@@ -1,8 +1,9 @@
-<h3>Top Widgets</h3>
+<h3>Top Heroes</h3>
 <div class="grid grid-pad">
-  <a *ngFor="let widget of widgets"  [routerLink]="['/widget', widget.id]"  class="col-1-4">
-    <div class="module widget">
-      <h4>{{widget.name}}</h4>
+  <a *ngFor="let hero of heroes"  [routerLink]="['/detail', hero.id]"  class="col-1-4">
+    <div class="module hero">
+      <h4>{{hero.name}}</h4>
     </div>
   </a>
 </div>
+<hero-search></hero-search>

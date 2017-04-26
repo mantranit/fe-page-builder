@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Widget } from './../models/widget';
-import { WidgetService } from './../services/widget.service';
+import { Hero }        from './../models/hero';
+import { HeroService } from './../services/hero.service';
 
 @Component({
   selector: 'my-dashboard',
@@ -9,15 +9,12 @@ import { WidgetService } from './../services/widget.service';
   styleUrls: [ './../../styles/dashboard.component.css' ]
 })
 export class DashboardComponent implements OnInit {
+  heroes: Hero[] = [];
 
-  widgets: Widget[] = [];
-
-  constructor(
-      private widgetService: WidgetService
-  ) { }
+  constructor(private heroService: HeroService) { }
 
   ngOnInit(): void {
-    this.widgetService.getWidgets()
-        .then(widgets => this.widgets = widgets.slice(1, 5));
+    this.heroService.getHeroes()
+      .then(heroes => this.heroes = heroes.slice(1, 5));
   }
 }
