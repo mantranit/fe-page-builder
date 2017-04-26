@@ -1,0 +1,19 @@
+<ul class="fepb-rows">
+  <li class="fepb-row" *ngFor="let row of rows">
+    <div class="fepb-row-toolbar">
+      <div class="fepb-row-name">{{row.name}}</div>
+      <button (click)="editRow()">Edit</button>
+      <button (click)="removeRow()">Remove</button>
+    </div>
+    <div class="fepb-columns">
+      <div class="fepb-column" *ngFor="let column of getColumns(row)"
+           [ngStyle]="{'width': column.percent + '%'}">
+        <div class="fepb-column-inner">
+          <h4>FEPB Name</h4>
+          <p>Description</p>
+        </div>
+      </div>
+    </div>
+  </li>
+</ul>
+

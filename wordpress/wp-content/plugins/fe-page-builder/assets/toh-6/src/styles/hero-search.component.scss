@@ -7,11 +7,10 @@
   padding: 5px;
   background-color: white;
   cursor: pointer;
-}
-
-.search-result:hover {
-  color: #eee;
-  background-color: #607D8B;
+  &:hover {
+    color: #eee;
+    background-color: #607D8B;
+  }
 }
 
 #search-box{
