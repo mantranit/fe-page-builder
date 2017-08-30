@@ -4,7 +4,7 @@
  * Description: Page Builder Plugin for Front-end Developer.
  * Version: 1.0.0
  * Author: Man Tran
- * Author URI: http://mantranit.com/
+ * Author URI: http://www.mantran.net/
  * License: GPLv2 or later
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
  *

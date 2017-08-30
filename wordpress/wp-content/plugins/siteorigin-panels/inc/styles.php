@@ -45,8 +45,18 @@ class SiteOrigin_Panels_Styles {
 	}
 
 	static function register_scripts() {
-		wp_register_script( 'siteorigin-panels-front-styles', plugin_dir_url( __FILE__ ) . '../js/styling' . SITEORIGIN_PANELS_VERSION_SUFFIX . SITEORIGIN_PANELS_JS_SUFFIX . '.js', array( 'jquery' ), SITEORIGIN_PANELS_VERSION );
-		wp_register_script( 'siteorigin-parallax', plugin_dir_url( __FILE__ ) . '../js/siteorigin-parallax' . SITEORIGIN_PANELS_JS_SUFFIX . '.js', array( 'jquery' ), SITEORIGIN_PANELS_VERSION );
+		wp_register_script(
+			'siteorigin-panels-front-styles',
+			siteorigin_panels_url( 'js/styling' . SITEORIGIN_PANELS_VERSION_SUFFIX . SITEORIGIN_PANELS_JS_SUFFIX . '.js' ),
+			array( 'jquery' ),
+			SITEORIGIN_PANELS_VERSION
+		);
+		wp_register_script(
+			'siteorigin-parallax',
+			siteorigin_panels_url( 'js/siteorigin-parallax' . SITEORIGIN_PANELS_JS_SUFFIX . '.js' ),
+			array( 'jquery' ),
+			SITEORIGIN_PANELS_VERSION
+		);
 		wp_localize_script( 'siteorigin-panels-front-styles', 'panelsStyles', array(
 			'fullContainer' => apply_filters( 'siteorigin_panels_full_width_container', siteorigin_panels_setting( 'full-width-container' ) )
 		) );
@@ -334,7 +344,10 @@ class SiteOrigin_Panels_Styles {
 	 */
 	static function general_style_attributes( $attributes, $style ){
 		if ( ! empty( $style['class'] ) ) {
-			$attributes['class'] = array_merge( $attributes['class'], explode( ' ', $style['class'] ) );
+			if( ! is_array( $style['class'] ) ) {
+				$style['class'] = explode( ' ', $style[ 'class' ] );
+			}
+			$attributes['class'] = array_merge( $attributes['class'], $style['class'] );
 		}
 
 		if ( ! empty( $style['background_display'] ) && ! empty( $style['background_image_attachment'] ) ) {
@@ -447,7 +460,7 @@ class SiteOrigin_Panels_Styles {
 			}
 		}
 		if ( ! empty( $css_key ) && ! empty( $style[ $css_key ] ) ) {
-			preg_match_all( '/^(.+?):(.+?);?$/m', $style[ $css_key ], $matches );
+			preg_match_all( '/^([A-Za-z0-9\-]+?):(.+?);?$/m', $style[ $css_key ], $matches );
 
 			if ( ! empty( $matches[0] ) ) {
 				for ( $i = 0; $i < count( $matches[0] ); $i ++ ) {
@@ -471,9 +484,13 @@ class SiteOrigin_Panels_Styles {
 		if( ! empty( $style['mobile_padding'] ) ) {
 			$css['padding'] = $style[ 'mobile_padding' ];
 		}
+		
+		if ( ! empty( $style['background_display'] ) && ! empty( $style['background_image_attachment'] ) && $style['background_display'] == 'fixed' ) {
+			$css[ 'background-attachment' ] = 'scroll';
+		}
 
 		if ( ! empty( $style[ 'mobile_css' ] ) ) {
-			preg_match_all( '/^(.+?):(.+?);?$/m', $style[ 'mobile_css' ], $matches );
+			preg_match_all( '/^([A-Za-z0-9\-]+?):(.+?);?$/m', $style[ 'mobile_css' ], $matches );
 
 			if ( ! empty( $matches[0] ) ) {
 				for ( $i = 0; $i < count( $matches[0] ); $i ++ ) {
